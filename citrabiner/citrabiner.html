@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citra Binner</title>
+    <link rel="stylesheet" href="citrabiner.css">
+    <script>
+        function displayImage(event) {
+            const image = document.getElementById('uploadedImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.onload = () => {
+                URL.revokeObjectURL(image.src);
+            }
+        }
+
+        function processImage() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Gambar telah diproses!'; // Ganti dengan logika pemrosesan gambar yang sebenarnya
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="../ubahukuran/ubahukuran.html">Ubah Ukuran</a></li>
+                <li><a href="../efeknegatif/efeknegatif.html">Efek Negatif</a></li>
+                <li><a href="../perbaikicitra/perbaikicitra.html">Perbaiki Citra</a></li>
+                <li><a href="../citrabiner/citrabiner.html">Citra Biner</a></li>
+                <li><a href="../deteksitepi/deteksitepi.html">Pendeteksian Tepi</a></li>
+                <li><a href="../deteksigambar/deteksigambar.html">Pendeteksian Objek</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="process">
+            <h1>Citra Biner</h1>
+            <input type="file" id="upload" accept="image/*" onchange="displayImage(event)">
+            <button onclick="processImage()">Proses Gambar</button>
+            <div id="imageContainer">
+                <img id="uploadedImage" alt="Unggah gambar Anda di sini">
+            </div>
+            <div id="result"></div>
+        </section>
+    </main>
+</body>
+</html>
